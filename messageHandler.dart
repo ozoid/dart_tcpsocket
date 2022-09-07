@@ -53,7 +53,9 @@ class MessageHandler {
           callback: foundMsg.callback,
           init: foundMsg.init
         );
+        //----- Pass inbound message to commandHandler ----
         commandHandler.doCommand(msg);
+        //-------------------------------------------------
         if(removeSimilar){
           messages.removeWhere((iMsg) => iMsg.text.startsWith(cmdStart));
         }else {
@@ -69,7 +71,6 @@ class MessageHandler {
   List<Message> missedMessages(int ageSeconds){
     var mm = messages.where((iMsg) => iMsg.timeSent.isBefore(DateTime.now().subtract(Duration(seconds:ageSeconds)))).toList();
     if(mm!=null && mm.length >0) {
-      //print("Message: ${mm.last.text}");
       return mm;
     }
     return [];
