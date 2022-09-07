@@ -13,3 +13,24 @@ In main:
         bbComms = AndroidSock();
       }
     ...
+
+TX Data:
+        
+        bbComms.messaging.sendMessage(MessageType messageType);
+        
+RX Data:
+In messageHandler doInboundCommands
+pass inbound results to a commandHandler 
+
+e.g.
+
+        class CommandHandler{
+            void doCommand(Message message){
+                switch (message.messageType){
+                    case MessageType.UNKNOWN:
+                        //do something
+                        break;
+                    case MessageType.VOID_GAME:
+                        //do something else
+                        break;
+                    ...
