@@ -1,11 +1,15 @@
 # dart_tcpsocket
 Dart Persistent TCP Socket Client Example 
+
 All examples I found previously, disconnected after sending.
+
 This example has a persistent connection and listener that allows the TCP channel to stay open so you can send and receive multiple strings of data.
+
 
 androidSock.dart - main tcp socket control
 
 messageHandler.dart - a solution to sync tx/rx and pass incoming data to a commandHandler
+
 
 In main:
 
@@ -19,10 +23,12 @@ In main:
       }
     ...
 
+
 TX Data:
         
         bbComms.messaging.sendMessage(MessageType messageType, callback: callback);
-        
+
+
 RX Data:
 
 In messageHandler doInboundCommands - pass the inbound results to a commandHandler 
