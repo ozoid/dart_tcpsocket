@@ -24,10 +24,11 @@ In main:
         bbComms = AndroidSock();
       }
     ...
-    void sendMessage(String text){
+     void sendMessage(String text){
         Message msg = Message(text);
         bbComms.messaging.sendMessage(MessageType messageType, callback: widget.callback); //optional callback
-    }
+     }
+    ... 
 
 
 RX Data:
