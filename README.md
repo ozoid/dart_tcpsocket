@@ -4,6 +4,7 @@ Dart TCP Persistent Socket Example
 
 In main:
 
+    import 'androidSock.dart';
     Comms bbComms; 
 
     class MyApp extends StatelessWidget {
