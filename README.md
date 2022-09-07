@@ -14,6 +14,8 @@ messageHandler.dart - a solution to sync tx/rx and pass incoming data to a comma
 In main:
 
     import 'androidSock.dart';
+    import 'messageHandler.dart';
+    
     Comms bbComms; 
 
     class MyApp extends StatelessWidget {
@@ -22,16 +24,15 @@ In main:
         bbComms = AndroidSock();
       }
     ...
-
-
-TX Data:
-        
-        bbComms.messaging.sendMessage(MessageType messageType, callback: callback);
+    void sendMessage(String text){
+        Message msg = Message(text);
+        bbComms.messaging.sendMessage(MessageType messageType, callback: widget.callback); //optional callback
+    }
 
 
 RX Data:
 
-In messageHandler doInboundCommands - pass the inbound results to a commandHandler 
+In messageHandler doInboundCommands(..) - pass the inbound results to a commandHandler
 
 e.g.
 
