@@ -1,6 +1,9 @@
 # dart_tcpsocket
 Dart TCP Persistent Socket Example 
 
+androidSock - main tcp socket control
+
+messageHandler - a solution to sync tx/rx and pass incoming data to a commandHandler
 
 In main:
 
