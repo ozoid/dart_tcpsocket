@@ -91,16 +91,13 @@ class AndroidSock implements Comms{
 }
 //-----------------------------------------------------------------
   bool sendData(String text,String debugText) {
-    if(!text.startsWith("*GP")) {
-      log("${DateTime.now()} TB>BB: $text");
-    }
     if(text.trim() == ""){
       log("Empty Send");
       return false;
     }
     lastPoll.value = DateTime.now().toString();
     try {
-      socket.write("$text\r\n\r\n");
+      socket.write("$text\r\n");
     }catch(err){
       sendError(err.toString(), text, debugText);
       return false;
@@ -131,14 +128,6 @@ class AndroidSock implements Comms{
   Future<void> reconnect() async{
     log("reconnect");
     connection = false;
-    //connectionCount.value++;
-    //await Future.delayed(Duration(seconds: 1));
-   // if (timer != null){
-   //   timer.cancel();
-   // }
-   // if(socket != null){
-   //   socket.close();
-   // }
     Timer.periodic(Duration(seconds:3), (Timer timer) async {
       try {
         log("@@ retry");
@@ -156,27 +145,18 @@ class AndroidSock implements Comms{
     connection = false;
     connecting = false;
     subscription?.cancel();
-    //subscription = null;
     socket?.close();
     socket?.destroy();
-   // socket = null;
   }
 //-----------------------------------------------------------------
   FutureOr<Null> onTimeout(){
     connection = false;
     log("${DateTime.now()} Socket Timeout: ");
-    //if(socket != null){
-    //  socket.close();
-   // }
-    //reconnect(type, cmd, debugText)
-    //Timer(Duration(seconds: 1), () {
-    //  connect();
-    //});
   }
 //-----------------------------------------------------------------
   Future<void> processData(Uint8List data) async{
     String result = new String.fromCharCodes(data).trim();
-    if (connection == false && login == true)) {
+    if (connection == false)) {
       log("Reconnected");
       //..
     }
