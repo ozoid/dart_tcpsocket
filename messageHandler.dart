@@ -5,8 +5,9 @@ import 'dart:core';
 import 'dart:developer';
 //#####################################################################
 enum MessageType{
-//...
+  GAME_START,
   VOID_GAME,
+  LOGIN,
   UNKNOWN,
 }
 //#####################################################################
@@ -22,11 +23,18 @@ class Message {
   }
   //-----------------------------------------------------------------
   MessageType getMessageType(String cmd){
+    // example format @X.. e.g. @XE 123  or @XV
     String mType = cmd[2];
     switch (mType){
     //..
-      case "F":
+      case "V":
         return MessageType.VOID_GAME;
+      case "L":
+        return MessageType.LOGIN;
+      case "S":
+        return MessageType.GAMESTART;  
+      default:
+        return MessageType.UNKNOWN;    
     }
     return MessageType.UNKNOWN;
   }
@@ -39,12 +47,13 @@ class MessageHandler {
   CommandHandler commandHandler = CommandHandler();
   MessageHandler(this.removeSimilar);
 //-------------------------------------------------------------------
-  /// From android stream processData
+  /// From androidSock processData
   void doInboundCommands(String rawResult){
     List results = splitResults(rawResult);
     for(String result in results) {
       try {
       String cmdStart = result.substring(0,3);  // check the response starts with the same letters as the request.. (i.e. a reply)
+        // match up sent message with received message and grab the additional data/callback
       List<Message> found = messages.where((iMsg) => iMsg.text.startsWith(cmdStart)).toList();
       if(found != null && found.length >0) {
         Message foundMsg = found.last;
@@ -56,6 +65,7 @@ class MessageHandler {
         //----- Pass inbound message to commandHandler ----
         commandHandler.doCommand(msg);
         //-------------------------------------------------
+        // remove messages from list
         if(removeSimilar){
           messages.removeWhere((iMsg) => iMsg.text.startsWith(cmdStart));
         }else {
