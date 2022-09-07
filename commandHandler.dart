@@ -7,10 +7,10 @@ class CommandHandler{
   void doCommand(Message message){
     switch (message.messageType){
       case MessageType.GAME_START:
-        //startGame(message);
+        startGame(message);
         break;
       case MessageType.LOGIN:
-        //loginUser(message);
+        loginUser(message);
         break;
       case MessageType.UNKNOWN:
         //do something
@@ -21,10 +21,13 @@ class CommandHandler{
       default:
         break;
     }
+     if(message.callback != null) {
+      message.callback();
+    }
   }
 //-------------------------------------  
   void startGame(Message msg){
-    log("Game Started");    
+    log("Game Started ${msg.debugText}");    
   }
 //-------------------------------------  
   void loginUser(Message msg){
