@@ -8,7 +8,9 @@ This example has a persistent connection and listener that allows the TCP channe
 
 androidSock.dart - main tcp socket control
 
-messageHandler.dart - a solution to sync tx/rx and pass incoming data to a commandHandler
+messageHandler.dart - a solution to sync tx/rx and pass incoming data to commandHandler.dart
+
+commandHandler.dart - handle incopming messages and associated functions.
 
 
 In main:
@@ -30,20 +32,3 @@ In main:
      }
     ... 
 
-
-RX Data:
-
-In messageHandler doInboundCommands(..) - pass the inbound results to a commandHandler
-
-e.g.
-
-        class CommandHandler{
-            void doCommand(Message message){
-                switch (message.messageType){
-                    case MessageType.UNKNOWN:
-                        //do something
-                        break;
-                    case MessageType.VOID_GAME:
-                        //do something else
-                        break;
-                    ...
