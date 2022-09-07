@@ -1,7 +1,7 @@
 # dart_tcpsocket
 Dart Persistent TCP Socket Client Example 
 
-All examples I found previously, disconnected after sending.
+All examples I found previously online, disconnected after sending, so I made my own version that seems to work ok.
 
 This example has a persistent connection and listener that allows the TCP channel to stay open so you can send and receive multiple strings of data.
 
