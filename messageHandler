@@ -1,6 +1,6 @@
-import 'package:dealer_terminal/main.dart';
-import 'package:dealer_terminal/mods/messageBuilder.dart';
-import 'package:dealer_terminal/mods/commandHandler.dart';
+import 'main.dart';
+import 'messageBuilder.dart';
+import 'commandHandler.dart';
 import 'dart:core';
 import 'dart:developer';
 //#####################################################################
