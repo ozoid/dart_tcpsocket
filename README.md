@@ -10,8 +10,9 @@ androidSock.dart - main tcp socket control
 
 messageHandler.dart - a solution to sync tx/rx and pass incoming data to commandHandler.dart
 
-commandHandler.dart - handle incopming messages and associated functions.
+commandHandler.dart - handle incoming messages and run associated functions.
 
+messageBuilder.dart - a utility to build messages to send for a simple protocol.
 
 In main:
 
@@ -26,9 +27,8 @@ In main:
         bbComms = AndroidSock();
       }
     ...
-     void sendMessage(String text){
-        Message msg = Message(text);
-        bbComms.messaging.sendMessage(msg, callback: widget.callback);
+     void sendStart(){
+        bbComms.messaging.sendMessage(MessageType.START_GAME, callback: widget.callback);
      }
     ... 
 
