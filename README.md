@@ -1,5 +1,5 @@
 # dart_tcpsocket
-Dart TCP Persistent Socket Example 
+Dart Persistent TCP Socket Client Example 
 
 androidSock - main tcp socket control
 
