@@ -19,7 +19,7 @@ In main:
 
 TX Data:
         
-        bbComms.messaging.sendMessage(MessageType messageType);
+        bbComms.messaging.sendMessage(MessageType messageType, callback: callback);
         
 RX Data:
 In messageHandler doInboundCommands
