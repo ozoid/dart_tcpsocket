@@ -28,7 +28,7 @@ In main:
     ...
      void sendMessage(String text){
         Message msg = Message(text);
-        bbComms.messaging.sendMessage(MessageType messageType, callback: widget.callback); //optional callback
+        bbComms.messaging.sendMessage(msg, callback: widget.callback);
      }
     ... 
 
