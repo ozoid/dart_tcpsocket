@@ -35,8 +35,8 @@ class Message {
 class MessageHandler {
   bool removeSimilar = false;
   List<Message> messages = [];
-  MessageBuilder builder = MessageBuilder();  // not included
-  CommandHandler commandHandler = CommandHandler();  // not included
+  MessageBuilder builder = MessageBuilder();
+  CommandHandler commandHandler = CommandHandler();
   MessageHandler(this.removeSimilar);
 //-------------------------------------------------------------------
   /// From android stream processData
