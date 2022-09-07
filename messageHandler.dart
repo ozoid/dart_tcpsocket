@@ -43,15 +43,8 @@ class MessageHandler {
   void doInboundCommands(String rawResult){
     List results = splitResults(rawResult);
     for(String result in results) {
-      if(!result.startsWith("*GP")) {
-        log("${DateTime.now()} BB>TB: $result");
-      }
-      if (!result.startsWith("*G")) {
-        log("Malformed Command $result");
-        continue;
-      }
       try {
-      String cmdStart = result.substring(0,3);
+      String cmdStart = result.substring(0,3);  // check the response starts with the same letters as the request.. (i.e. a reply)
       List<Message> found = messages.where((iMsg) => iMsg.text.startsWith(cmdStart)).toList();
       if(found != null && found.length >0) {
         Message foundMsg = found.last;
